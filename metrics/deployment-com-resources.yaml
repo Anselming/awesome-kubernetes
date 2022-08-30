@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: meunginx-service
+spec:
+  selector:
+    app: meunginx
+  ports:
+  - port: 80
+    targetPort: 9999
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meunginx
+spec:
+  selector:
+    matchLabels:
+      app: meunginx
+  template:
+    metadata:
+      labels:
+        app: meunginx
+    spec:
+      containers:
+      - name: meunginx
+        image: thiagoanselme/hpa-test:v3
+        resources:
+          limits:
+            memory: "16Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

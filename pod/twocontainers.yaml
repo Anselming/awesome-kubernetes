@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: two-containers
+  labels:
+    name: two-containers
+    anotherlabel: another-value
+
+spec:
+  restartPolicy: Never
+  containers:
+  - name: container-one
+    image: debian
+    command: ["/bin/bash", "-c"]
+    args:
+      - while true; do
+          sleep 60; 
+        done
+
+        
+
+  - name: container-two
+    image: debian
+    command: ["/bin/bash", "-c"]
+    args:
+      - while true; do
+          sleep 60; 
+        done
+

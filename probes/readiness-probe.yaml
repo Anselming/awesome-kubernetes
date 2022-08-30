@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: meupod2
+  labels:
+    name: meupod2
+spec: 
+  containers:
+  - name: meupod2
+    image: nginx
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: 80
+      periodSeconds: 5             
+      failureThreshold: 1          
+      timeoutSeconds: 1            
+      successThreshold: 1   

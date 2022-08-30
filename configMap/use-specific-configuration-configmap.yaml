@@ -23,6 +23,3 @@ spec:
               configMapKeyRef:
                 name: simple-configmap
                 key: databasename
-
-
-

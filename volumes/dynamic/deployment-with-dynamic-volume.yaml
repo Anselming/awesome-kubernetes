@@ -1,0 +1,54 @@
+# StorageClass
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: google
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
+
+---
+# Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: google-pvc
+spec:
+  accessModes:
+  # - ReadOnlyMany
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: google
+
+---
+# Deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-pvc
+spec:
+  selector:
+    matchLabels:
+      app: pod-pvc
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: pod-pvc
+    spec:
+      containers:
+        - name: nginx-vim
+          image: "thiagoanselme/nginx-com-vim"
+          volumeMounts:
+          - mountPath: /app/files
+            name: pv
+        
+
+      volumes:
+      - name: pv
+        persistentVolumeClaim:
+          claimName: google-pvc

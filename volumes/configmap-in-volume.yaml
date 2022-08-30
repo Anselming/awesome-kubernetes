@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  databasename: Library
+  databaseport: "3368"
+
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-config-pod
+spec:
+  containers:
+  - name: nginx
+    image: thiagoanselme/nginx-com-vim
+    volumeMounts:
+    - name: config
+      mountPath: "/app/config"
+      readOnly: true
+      
+  volumes:
+  - name: config
+    configMap:
+      name: my-configmap

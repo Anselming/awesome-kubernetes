@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gce22
+
+spec:
+  restartPolicy: Never
+  volumes:
+  - name: test-volume-full
+    # This GCE PD must already exist.
+    gcePersistentDisk:
+      pdName: anselme-disk
+      fsType: ext4
+      # gcloud compute disks create --size=1GB --zone=us-central1-a anselme-disk
+
+  containers:
+  - name: container-one
+    image: debian
+    volumeMounts:
+    - mountPath: /appx
+      name: test-volume-full    
+    command: ["/bin/bash", "-c"]
+    args:
+      - while true; do
+          sleep 60; 
+        done
+
+        
+
+  - name: container-two
+    image: debian
+    command: ["/bin/bash", "-c"]
+    args:
+      - while true; do
+          sleep 60; 
+        done
+

@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-host
+  annotations:                                        ## Sistemas que consomem desse ingress podem utilizar esse anotation para alguma funcionalidade
+    kubernetes.io/ingress.class: "nginx"              ## podem existir outros Ingress
+
+spec:
+  rules:
+  - host: "ingress.anselme.com.br"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/teste"
+        backend:
+          service:
+            name: goserver
+            port: 
+              number: 80
+
