@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: report
+spec:
+  schedule: "1 * * * 1-5"
+  jobTemplate:
+    spec:
+      template:
+        containers:
+        - name: report
+          image: anselme-report:latest
+          command: ["get-daily-report"]
+        restartPolicy: Never
+

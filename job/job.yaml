@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: report
+spec:
+  template:
+    spec:
+      containers:
+      - name: report
+        image: anselme-report:latest
+        command: ["get-daily-report"]
+      restartPolicy: Never
+  backoffLimit: 4

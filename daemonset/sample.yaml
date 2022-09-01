@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: meu-daemonset
+spec:
+  selector:
+    matchLabels:
+      name: meu-daemonset
+  template:
+    metadata:
+      labels:
+        name: meu-daemonset
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus
+          ports:
+          - containerPort: 9090
+
