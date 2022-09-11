@@ -13,6 +13,6 @@ spec:
   restartPolicy: Never
 
 
-## Como testar?
+## How to test it?
 # kubectl logs queue -c producer
 # kubectl logs queue -c consomer

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: mysql-h
 spec:
-  #type:        # O headless service não possui type definido
+  #type:        # The headless service dont have defined type
   selector:
     app: mysql
   ports:

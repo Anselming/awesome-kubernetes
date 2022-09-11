@@ -2,14 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-host
-  annotations:                                        ## Sistemas que consomem desse ingress podem utilizar esse anotation para alguma funcionalidade
-    kubernetes.io/ingress.class: "nginx"              ## podem existir outros Ingress
-    cert-manager.io/cluster-issuer: "lets-encrypt"          ### Linha que relaciona o INGRESS ao CERT-MANAGER através do ClusterIssuer
-    ingress.kubernetes.io/force-ssl-redirect: "true"  ## plugin que transforma HTTP em HTTPS
+  annotations:                                        
+    kubernetes.io/ingress.class: "nginx"              
+    cert-manager.io/cluster-issuer: "lets-encrypt"    
+    ingress.kubernetes.io/force-ssl-redirect: "true"  
 
 spec:
   rules:
-  - host: "ingress.anselme.com.br"
+  - host: "ingress.website.com"
     http:
       paths:
       - pathType: Prefix
@@ -21,6 +21,6 @@ spec:
               number: 80
   tls:
   - hosts:
-    - "ingress.anselme.com.br"  
+    - "ingress.website.com"  
     secretName: "lets-encrypt-certificate"
 

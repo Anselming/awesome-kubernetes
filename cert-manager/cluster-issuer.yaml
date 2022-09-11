@@ -5,21 +5,21 @@ metadata:
   namespace: cert-manager
 
 spec:
-  acme:                                                         # Definição de quem vai emitir os certificados
-    server: https://acme-v02.api.letsencrypt.org/directory      # URL da emissora
-    email: thiago@anselme.com.br                                # e-mail de referência para o certificado
+  acme:                                                               # Issuer
+    server: https://acme-v02.api.letsencrypt.org/directory            # url of cartificate issuer
+    email: certificate-email@mail.com                                 # reference mail to the certificates
     privateKeySecretRef:
-      name: lets-encrypt-certificate                            # nome da chave privada do certificado
+      name: lets-encrypt-certificate                                  # Name os secret key certificate
     solvers:
     - http01:
         ingress:
-          class: nginx                                            # quem no cluster pode utilizar. Isso depende da Annotation no Ingress
+          class: nginx                                                # Who is allow to use that one. It depends on the 'Annotation' on Ingress
 
-## Essas anotations que precisam estar relacionadas com o solver
-#
+
+# The ingress needs to have these configuration lines
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
 # metadata:
 #   name: ingress-host
-#   annotations:                                        ## Sistemas que consomem desse ingress podem utilizar esse anotation para alguma funcionalidade
-#     kubernetes.io/ingress.class: "nginx"              ## podem existir outros Ingress
+#   annotations:                                      
+#     kubernetes.io/ingress.class: "nginx"                            # It is obligatory

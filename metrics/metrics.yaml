@@ -137,7 +137,7 @@ spec:
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port
         - --metric-resolution=15s
-        - --kubelet-insecure-tls
+        - --kubelet-insecure-tls                                            # It is optional. If you use a local kubernetes infrastructure like k3d, kind, etc. you can use that one to avoid configuring the TLS on the cluster
         image: k8s.gcr.io/metrics-server/metrics-server:v0.6.1
         imagePullPolicy: IfNotPresent
         livenessProbe:

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: meupod2
+  name: my-pod
   labels:
-    name: meupod2
+    name: my-pod
 spec: 
   containers:
-  - name: meupod2
+  - name: mypod
     image: nginx
     readinessProbe:
       httpGet:

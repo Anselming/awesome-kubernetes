@@ -6,6 +6,6 @@ spec:
   selector:
     app: goserver
   ports:
-  - port: 80            # porta que o service expoe para fora
-    targetPort: 9001    # porta que o pod expoe
+  - port: 80            # outsite port
+    targetPort: 9001    # container port
     protocol: TCP

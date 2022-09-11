@@ -7,8 +7,8 @@ spec:
   selector:
     app: goserver
   ports:
-    - port: 80            # porta que o service expor para dentro do cluster
-      targetPort: 9001    # porta que o pod expoe para fora
+    - port: 80            # outsite port: valid only on the cluster;
+      targetPort: 9001    # container port
       # Optional field
-      nodePort: 30001     # porta que o service expoe em todos os nodes do cluster
+      nodePort: 30001     # internal cluster port, acessible for all nodes on the cluster
       protocol: TCP

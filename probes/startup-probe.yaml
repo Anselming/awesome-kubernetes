@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: meupod3
+  name: my-pod
   labels:
-    name: meupod3
+    name: my-pod
 spec: 
   containers:
-  - name: meupod3
+  - name: mypod
     image: nginx
     
     startupProbe:

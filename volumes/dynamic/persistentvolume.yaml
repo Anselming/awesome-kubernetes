@@ -10,5 +10,3 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: google
-
-# Não pode ser utilizado dinamicamente

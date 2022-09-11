@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: acesso-ao-banco-de-producao
+  name: access-to-production-database
   namespace: database
 
 spec:

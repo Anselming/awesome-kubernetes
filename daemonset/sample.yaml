@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: meu-daemonset
+  name: my-daemonset
 spec:
   selector:
     matchLabels:
-      name: meu-daemonset
+      name: my-daemonset
   template:
     metadata:
       labels:
-        name: meu-daemonset
+        name: my-daemonset
     spec:
       containers:
         - name: prometheus
