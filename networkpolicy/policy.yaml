@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: acesso-ao-banco-de-producao
+  namespace: database
+
+spec:
+  podSelector:
+    matchLabels:
+      environment: database
+  policyTypes:
+    - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          myspace: production
